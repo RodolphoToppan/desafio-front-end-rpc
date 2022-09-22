@@ -1,46 +1,45 @@
-# Getting Started with Create React App
+# Desafio Front end / Mobile
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Requisitos:
 
-## Available Scripts
+    - Npm
+    - Yarn
+  
+### Descrição do desafio:
+Na RPC trabalhamos diariamente com dados provenientes da Rede Globo. Um exemplo comum é a nossa grade de programação, que traz informações relevantes sobre horários de programa, título, sinopse, entre outros.
 
-In the project directory, you can run:
+Como desenvolvedor de aplicações para web, você precisa construir uma aplicação para que nossos telespectadores possam acessar a grade de programação da RPC. 
 
-### `yarn start`
+Para que sua aplicação web seja útil ao público final (nossos telespectadores), você deverá consumir a API "EPG" da Globo e conseguir as informações relacionadas a grade de programação da RPC.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Observações:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+* Estava com algum problema para consumir a API da Globo (erro no CORS), tentei de várias formas contornar esseobstáculo e a única que achei foi utilizar outro projeto que acabei encontrando no GitHub do usuário "msenkiv" para conseguir coletar os dados da API. Fiz alguns ajustes para a minha aplicação, mas mesmo assim alguns dados, como title, de alguns programas não foram consumidos.
 
-### `yarn test`
+* O projeto reutilizado está nesse <a href="https://github.com/RodolphoToppan/API-RPC">link</a>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Como executar:
 
-### `yarn build`
+    - Clone o repositório de apoio "API-RPC"
+    - Use o comando no terminal: "npm install"
+    - Agora basta rodar o projeto com o comando: "npm start"
+    
+    - Agora para rodar a aplicação desenvolvida no desafio, clone esse repositório
+    - Digite no terminal o comando "yarn install"
+    - Digite no terminal novamente o comando "yarn start"
+    - A página no browser deverá abrir automaticamente na porta "localhost:3000"
+    - Caso não abra, basta digitar "localhost:3000" na barra de endereço do navegador que preferir
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Biliotecas utilizadas
+#### React 18.0.0:
+ -   Typescript
+ -   Styled-components - estilização dos componentes e páginas
+ -   Swiper - troca do dia da programação durante a semana (acabou não sendo utilizado)
+ -   react-collapsed - abertura e fechamento de uma janela com mais detalhes da programação
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### Notas do desenvolvimento
 
-### `yarn eject`
+Minha maior dificuldade nesse desafio foi consumir a API, fiquei alguns dias para tentar resolver o erro no CORS que apareceu, mas não consegui. Pedi ajuda a um amigo mais experiente e ele me instruiu a utilizar o repositório que encontrei no GitHub para coletar os dados da API e assim dar sequência no desenvolvimento da aplicação. 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Infelizmente esse erro acabou tomando muito tempo, o que deixou o projeto, ao meu ver, simples demais. O layout foi baseado no site: https://redeglobo.globo.com/rpc/programacao/. Das funcionalidades exigidas, consegui implementar a grade de programação do dia e um botão que abre uma janela mostrando mais detalhes do programa. Procurei deixar o layout o mais responsivo possível e utilizei o typescript também.
