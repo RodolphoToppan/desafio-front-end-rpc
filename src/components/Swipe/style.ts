@@ -1,12 +1,7 @@
 import styled from "styled-components";
 
 export const Content = styled.div`
-width: 100vw;
 margin-top: 1rem;
-display: flex;
-justify-content: center;
-align-items: flex-start;
-padding: 1rem 7rem 1rem 7rem;
 
 @media (max-width: 1080px) {
   padding: 1rem 2rem 1rem 2rem;
@@ -16,22 +11,27 @@ padding: 1rem 7rem 1rem 7rem;
 }
 
 .swiper-wrapper {
-  display: flex;
-  align-items: center; 
+  height: 6rem;
+  height: fit-content;
 }
 
-.swiper-slide {
+.swiper-slide-active { 
   display: flex;
   justify-content: center;
-  font-size: 5rem;
+  
+  >h3{
+    font-weight: 400;
+    font-size: 5rem;
 
-  @media (max-width: 1080px) {
-    font-size: 4.2rem;
+    @media (max-width: 1080px) {
+      font-size: 4.2rem;
+    }
+    @media (max-width: 720px) {
+      font-size: 1.5rem;
+    }
   }
-  @media (max-width: 720px) {
-    font-size: 3.5rem;
-  }
+  .swiper-button-prev:after, .swiper-container-rtl .swiper-button-next:after, .swiper-button-next:after, .swiper-container-rtl .swiper-button-prev:after {
+    text-rendering: auto;
 }
-
-
+}
 `

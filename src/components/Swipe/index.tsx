@@ -1,22 +1,38 @@
 import { Navigation } from 'swiper';
-
 import { Swiper, SwiperSlide } from 'swiper/react';
-
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Content } from './style';
 
 export function Swipe() {
-
+  const weekday = ["DOM","SEG","TER","QUA","QUI","SEX","SÁB"];
+  const month = ["JANEIRO","FEVEREIRO", "MARÇO", "ABRIL", "MAIO", "JUNHO", "JULHO", "AGOSTO", "SETEMBRO", "OUTUBRO", "NOVEMBRO", "DEZEMBRO"]
+  const date = new Date();
+  
   function getDate() {
-    const weekday = ["DOM","SEG","TER","QUA","QUI","SEX","SÁB"];
-    const month = ["JANEIRO","FEVEREIRO", "MARÇO", "ABRIL", "MAIO", "JUNHO", "JULHO", "AGOSTO", "SETEMBRO", "OUTUBRO", "NOVEMBRO", "DEZEMBRO"]
-    const date = new Date();
     let day = weekday[date.getDay()]
     let monthName = month[date.getMonth()]
 
     return (
-      <p>{`${day}, ${date.getDate()} DE ${monthName}`}</p>
+      <h3>{`${day}, ${date.getDate()} DE ${monthName}`}</h3>
+    )
+  }
+
+  function prevDate() {
+    let nextday = weekday[date.getDay() - 1]
+    let monthName = month[date.getMonth()]
+
+    return (
+      <h3>{`${nextday}, ${date.getDate() - 1} DE ${monthName}`}</h3>
+    )
+  }
+
+  function nextDate() {
+    let nextday = weekday[date.getDay() + 1]
+    let monthName = month[date.getMonth()]
+
+    return (
+      <h3>{`${nextday}, ${date.getDate() + 1} DE ${monthName}`}</h3>
     )
   }
 
@@ -24,11 +40,14 @@ export function Swipe() {
     <Content>
       <Swiper
         modules={[Navigation]}
-        spaceBetween={50}
-        slidesPerView={1}
+        // slidesPerView={1}
         navigation
+        initialSlide = {1}
+        loopPreventsSlide = {true}
       >
-        <SwiperSlide className='swiper-slide'>{getDate()}</SwiperSlide>
+        {/* <SwiperSlide>{prevDate()}</SwiperSlide> */}
+        <SwiperSlide>{getDate()}</SwiperSlide>
+        {/* <SwiperSlide>{nextDate()}</SwiperSlide> */}
       </Swiper>
     </Content>
   );
