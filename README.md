@@ -14,9 +14,9 @@ Para que sua aplicação web seja útil ao público final (nossos telespectadore
 
 ### Observações:
 
-* Estava com algum problema para consumir a API da Globo (erro no CORS), tentei de várias formas contornar esseobstáculo e a única que achei foi utilizar outro projeto que acabei encontrando no GitHub do usuário "msenkiv" para conseguir coletar os dados da API. Fiz alguns ajustes para a minha aplicação, mas mesmo assim alguns dados, como title, de alguns programas não foram consumidos.
+* Estava com algum problema para consumir a API da Globo (erro no CORS), tentei de várias formas contornar esse obstáculo e a única que achei foi fazer um BFF.
 
-* O projeto reutilizado está nesse <a href="https://github.com/RodolphoToppan/API-RPC">link</a>
+* O projeto está nesse <a href="https://github.com/RodolphoToppan/API-RPC">link</a>
 
 ### Como executar:
 
@@ -34,12 +34,14 @@ Para que sua aplicação web seja útil ao público final (nossos telespectadore
 ### Biliotecas utilizadas
 #### React 18.0.0:
  -   Typescript
- -   Styled-components - estilização dos componentes e páginas
+ -   Axios - consumir a API
+ -   Styled - components - estilização dos componentes e páginas
+ -   Moment - facilitar a manipulação de datas e horas
  -   Swiper - troca do dia da programação durante a semana (acabou não sendo utilizado)
  -   react-collapsed - abertura e fechamento de uma janela com mais detalhes da programação
 
 #### Notas do desenvolvimento
 
-Minha maior dificuldade nesse desafio foi consumir a API, fiquei alguns dias para tentar resolver o erro no CORS que apareceu, mas não consegui. Pedi ajuda a um amigo mais experiente e ele me instruiu a utilizar o repositório que encontrei no GitHub para coletar os dados da API e assim dar sequência no desenvolvimento da aplicação. 
+Minha maior dificuldade nesse desafio foi consumir a API, fiquei alguns dias para tentar resolver o erro no CORS que apareceu, mas não consegui. Acabei encontrando um repositório parecido no GitHub e também pedi ajuda a um amigo mais experiente, assim consegui coletar os dados da API e pude dar sequência no desenvolvimento da aplicação. 
 
-Infelizmente esse erro acabou tomando muito tempo, o que deixou o projeto, ao meu ver, simples demais. O layout foi baseado no site: https://redeglobo.globo.com/rpc/programacao/. Das funcionalidades exigidas, consegui implementar a grade de programação do dia e um botão que abre uma janela mostrando mais detalhes do programa. Procurei deixar o layout o mais responsivo possível e utilizei o typescript também.
+Tive outras dificuldades durante o desafio, mas consegui contornar a maioria delas. As funcionalidades que não consegui implementar eu deixei um comentário no código detalhando melhor o que aconteceu. O layout foi baseado no site: https://redeglobo.globo.com/rpc/programacao/. Gostei muito de desenvolver esse projeto, foi realmente um desafio para mim e consegui absorver muito conhecimento em tão pouco tempo.
