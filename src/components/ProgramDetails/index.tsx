@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { Container, Details } from "./style";
-import arrowImg from '../../assets/arrow.svg'
 import useCollapse from "react-collapsed";
 import moment from "moment";
 import axios from "axios";
 import { Swipe } from "../Swipe";
+import { ExpandButton } from "../ExpandButton";
 
 
  type ProgramProps = Array<{
@@ -27,13 +27,12 @@ import { Swipe } from "../Swipe";
  }
 
 export function ProgramDetails() {
-  const [program, setProgram] = useState<ProgramProps>([]);
-  const [isExpanded, setExpanded] = useState(false)
-  const [value, setValue] = useState(new Date());
-  const [show, setShow] = useState<ShowProps>(Object);
+  const [program, setProgram] = useState<ProgramProps>([])
+  const [isOpen, setIsOpen] = useState(false)
+  const [value, setValue] = useState(new Date())
+  const [show, setShow] = useState<ShowProps>(Object)
   const [checked, setChecked] = useState(false)
-
-  const { getCollapseProps, getToggleProps } = useCollapse({ isExpanded })
+  const [isActive, setIsActive] = useState(false)
 
   const listNow = (item: ShowProps) => {
     let initial = item.start
@@ -71,20 +70,21 @@ export function ProgramDetails() {
   }
 
   function handleOnClick() {
-    setExpanded(!isExpanded)
+    setIsOpen(!isOpen)
   }
 
   return (
     <Container>
-      <Swipe/> {/* essa parte seria responsável por percorrer os dias durante a semana e ir mostrando a programação de cada dia e por algum motivo os dias mudavam, aparecia no console.log mas na tela não mostrava nada. Deixei o código como tinha feito, mas resolvi tirar essa funcionalidade */}
+      <Swipe/> 
       {renderNow()}
         {program.map(data => { 
           return (            
             <Details key={data.start}>
               <img src={data.logoImg} alt={data.title} className="logo-img"/>
-              <p className="start-time">{(data.time).slice(0,5)}</p> {/* aqui eu busquei o dado "human_start_time" dentro da API e só depois que fui perceber que o tempo está com uma diferença de 3 horas a mais, acabei não conseguindo resolver isso */}
+              <p className="start-time">{(data.time).slice(0,5)}</p> 
               <h2 className="program-title">{data.title}</h2>
-              <p className="checkbox-label">Assistir mais tarde?</p>
+              <ExpandButton {...data} />
+              {/* <p className="checkbox-label">Assistir mais tarde?</p>
               <input
                 className="reminder-checkbox"
                 type="checkbox" 
@@ -94,17 +94,7 @@ export function ProgramDetails() {
                   true ? alert(`Programa: "${data.title}" marcado!`) : alert('Desmarcado!')
                   // aqui o checked está alterando, mas a condicional não altera com ele, sempre retornando true
                 }}
-              />
-              <button
-                {...getToggleProps({onClick: handleOnClick})}
-                className="default-expanded" 
-              >
-                <img src={arrowImg} alt="Expand" className="arrow-img" />
-              </button>
-              <section className="details-expanded" {...getCollapseProps()}>
-                <img src={data.mainImg} alt={data.title} className="main-img" />
-                <p className="description-program">{data.description}</p>
-              </section>
+              /> */}
             </Details>
             
           )

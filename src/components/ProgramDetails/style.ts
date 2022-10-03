@@ -130,7 +130,7 @@ margin-top: 1rem;
   }
 }
 
-.checkbox-label {
+/* .checkbox-label {
   font-size: 1.1rem;
   width: fit-content;
   grid-row: 1 / 1;
@@ -154,17 +154,23 @@ margin-top: 1rem;
     grid-column: 15 / 15;
     grid-row: 2 / 2;
   }
-}
+} */
 
 .default-expanded {
   grid-row: 1 / 1;
   background: transparent;
   border: none;
   grid-column: 15 / 15;
-  margin: auto;
+  /* margin: 1rem; */
+  height: 2rem;
 
   @media (max-width: 720px) {
     grid-column: 15 / 15;
+  }
+
+  img.arrow-down, img.arrow-up {
+    width: 2.4rem;
+    padding: 0.5rem;
   }
 }
 
@@ -183,7 +189,6 @@ margin-top: 1rem;
     gap: 1rem;
     flex-direction: column;
   }
-
 
   .main-img {
     width: 35rem;
