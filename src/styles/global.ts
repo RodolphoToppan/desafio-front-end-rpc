@@ -24,6 +24,7 @@ body {
 
 button {
   cursor: pointer;
+  border: none;
 }
 
 button:hover {

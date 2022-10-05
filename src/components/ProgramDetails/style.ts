@@ -161,7 +161,6 @@ margin-top: 1rem;
   background: transparent;
   border: none;
   grid-column: 15 / 15;
-  /* margin: 1rem; */
   height: 2rem;
 
   @media (max-width: 720px) {
@@ -180,6 +179,7 @@ margin-top: 1rem;
   grid-column: 3 / 15;
   height: fit-content;
   gap: 3rem;
+
 
   @media (max-width: 1080px) {
     grid-column: 1 / 15;

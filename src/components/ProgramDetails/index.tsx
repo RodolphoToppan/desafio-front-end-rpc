@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Container, Details } from "./style";
-import useCollapse from "react-collapsed";
 import moment from "moment";
 import axios from "axios";
 import { Swipe } from "../Swipe";
@@ -21,7 +20,7 @@ import { ExpandButton } from "../ExpandButton";
   description: string,
   mainImg: string,
   time: string,
-  start: number,
+  start: Date,
   end: number,
   title: string,
  }
@@ -43,14 +42,15 @@ export function ProgramDetails() {
       setShow(item)
     }
   };
-  
-  function renderNow() {   
+
+  function renderNow() {
     return (
       <div className="show-now">
         <h5 className="title-now">Ao vivo: {show.title}</h5>
         <img src={show.mainImg} alt={show.title} className="img-now" />
         <p className="description-now">{show.description}</p>
-      </div>);
+      </div>
+    );
   };
 
   useEffect(() => {
@@ -69,8 +69,18 @@ export function ProgramDetails() {
     setChecked(!checked)
   }
 
-  function handleOnClick() {
-    setIsOpen(!isOpen)
+  function secondsToHours(data: ProgramProps[4]) {
+    const timeStartMillisecs = data.start * 1000
+    const hour = new Date(timeStartMillisecs).getHours();
+    const minutes = new Date(timeStartMillisecs).getMinutes();
+    
+    const startHour = (hour < 10) ? '0' + hour : hour;
+    const startMinutes = (minutes < 10) ? '0' + minutes : minutes;
+    
+    var startTime = startHour + ':' + startMinutes;
+    return (
+      <p className="start-time">{startTime}</p>
+    )
   }
 
   return (
@@ -79,9 +89,9 @@ export function ProgramDetails() {
       {renderNow()}
         {program.map(data => { 
           return (            
-            <Details key={data.start}>
+            <Details key={data.title}>
               <img src={data.logoImg} alt={data.title} className="logo-img"/>
-              <p className="start-time">{(data.time).slice(0,5)}</p> 
+              {secondsToHours(data)}
               <h2 className="program-title">{data.title}</h2>
               <ExpandButton {...data} />
               {/* <p className="checkbox-label">Assistir mais tarde?</p>
