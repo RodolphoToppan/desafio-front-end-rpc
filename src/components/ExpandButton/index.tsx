@@ -6,7 +6,6 @@ type data = {
   description: string;
   logoImg: string;
   mainImg: string;
-  time: string;
   start: number;
   end: number;
   title: string;

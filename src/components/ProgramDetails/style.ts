@@ -130,32 +130,6 @@ margin-top: 1rem;
   }
 }
 
-/* .checkbox-label {
-  font-size: 1.1rem;
-  width: fit-content;
-  grid-row: 1 / 1;
-  grid-column: 13/13;
-
-  @media (max-width: 720px) {
-    font-size: 0.9rem;
-    width: 3rem;
-    grid-column: 14 / 14;
-    grid-row: 2 / 2;
-  }
-}
-
-.reminder-checkbox {
-  grid-row: 1 / 1;
-  grid-column: 14/14;
-  cursor: pointer;
-  margin: auto;
-
-  @media (max-width: 720px) {
-    grid-column: 15 / 15;
-    grid-row: 2 / 2;
-  }
-} */
-
 .default-expanded {
   grid-row: 1 / 1;
   background: transparent;
@@ -214,6 +188,53 @@ margin-top: 1rem;
       font-size: 1.1rem;
       width: fit-content;
     }
+  }
+}
+`
+export const Swiper = styled.div`
+margin-top: 1rem;
+display: flex;
+justify-content: space-between;
+align-items: center;
+
+@media (max-width: 1080px) {
+  padding: 1rem 2rem 1rem 2rem;
+}
+@media (max-width: 720px) {
+  padding: 0.5rem 1rem 0.5rem 1rem;
+}
+
+h3 {
+  font-size: 5.6rem;
+
+  @media (max-width: 1080px) {
+    font-size: 3.6rem;
+  }
+  @media (max-width: 720px) {
+    font-size: 2.4rem;
+  }
+}
+
+button.prev-button, button.next-button {
+  height: 5.5rem;
+
+}
+
+img.prev-arrow-button {
+  transform: rotate(-90deg);
+  height: 3rem;
+
+  @media (max-width: 720px) {
+    height: 2rem;
+  }
+}
+
+img.next-arrow-button {
+  transform: rotate(90deg);
+  height: 3rem;
+  
+  @media (max-width: 720px) {
+    height: 2rem;
   }
 }
 `

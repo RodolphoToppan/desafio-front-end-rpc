@@ -1,16 +1,14 @@
 import { useState, useEffect } from "react";
-import { Container, Details } from "./style";
-import moment from "moment";
+import { Container, Swiper, Details } from "./style";
 import axios from "axios";
-import { Swipe } from "../Swipe";
 import { ExpandButton } from "../ExpandButton";
-
+import arrowUpImg from '../../assets/arrowUp.svg'
+import moment from "moment";
 
  type ProgramProps = Array<{
   description: string,
   logoImg: string,
   mainImg: string,
-  time: string,
   start: number,
   end: number,
   title: string,
@@ -19,7 +17,6 @@ import { ExpandButton } from "../ExpandButton";
  type ShowProps = {
   description: string,
   mainImg: string,
-  time: string,
   start: Date,
   end: number,
   title: string,
@@ -27,16 +24,15 @@ import { ExpandButton } from "../ExpandButton";
 
 export function ProgramDetails() {
   const [program, setProgram] = useState<ProgramProps>([])
-  const [isOpen, setIsOpen] = useState(false)
-  const [value, setValue] = useState(new Date())
+  let [value, setValue] = useState('')
   const [show, setShow] = useState<ShowProps>(Object)
-  const [checked, setChecked] = useState(false)
-  const [isActive, setIsActive] = useState(false)
+  const today = new Date()
+
 
   const listNow = (item: ShowProps) => {
     let initial = item.start
     let end = item.end
-    let now = moment((value.getTime())/1000)
+    let now = moment((today.getTime())/1000)
 
     if (now.isBetween(initial, end)) {
       setShow(item)
@@ -54,8 +50,12 @@ export function ProgramDetails() {
   };
 
   useEffect(() => {
-    let date = moment(value).format('YYYY-MM-DD');
-    let url = `http://localhost:5000/rpc/list?date=${date}`;
+      const apiDate = moment().format('YYYY-MM-DD')
+      setValue(apiDate)
+  }, [])
+        
+  useEffect(() => {
+    let url = `http://localhost:5000/rpc/list?date=${value}`;
     axios.get(url).then(response => {
       let data = response.data
       data.map((prog: ShowProps) => {
@@ -63,10 +63,16 @@ export function ProgramDetails() {
       })
       setProgram(response.data)
     })
-  }, []);
+  }, [value])
+  
+  function prevDate() {
+    const prevDate = moment(value).subtract(1, 'days').format('YYYY-MM-DD')
+    setValue(prevDate)
+  }
 
-  function reminder() {
-    setChecked(!checked)
+  function nextDate() {
+    const nextDate = moment(value).add(1, 'days').format('YYYY-MM-DD')
+    setValue(nextDate)
   }
 
   function secondsToHours(data: ProgramProps[4]) {
@@ -83,28 +89,42 @@ export function ProgramDetails() {
     )
   }
 
+  function currentDate() {
+    const weekday = ["DOM","SEG","TER","QUA","QUI","SEX","SÁB"];
+    const month = ["JANEIRO","FEVEREIRO", "MARÇO", "ABRIL", "MAIO", "JUNHO", "JULHO", "AGOSTO", "SETEMBRO", "OUTUBRO", "NOVEMBRO", "DEZEMBRO"]
+    const swipeDate = moment(value)
+    let day = weekday[swipeDate.weekday()]
+    let monthName = month[swipeDate.month()]
+    let dayName = swipeDate.format("D")
+
+    return (
+      <h3>{`${day}, ${dayName} DE ${monthName}`}</h3>
+    )
+  }
+
   return (
     <Container>
-      <Swipe/> 
+      <Swiper>
+        <button className="prev-button"
+          onClick={() => prevDate()}
+          >
+          <img src={arrowUpImg} alt="" className='prev-arrow-button'/>
+        </button>
+        {currentDate()}
+        <button className="next-button"
+          onClick={() => nextDate()}
+          >
+          <img src={arrowUpImg} alt="" className='next-arrow-button'/>
+        </button>
+      </Swiper>
       {renderNow()}
         {program.map(data => { 
           return (            
-            <Details key={data.title}>
+            <Details key={data.start}>
               <img src={data.logoImg} alt={data.title} className="logo-img"/>
               {secondsToHours(data)}
               <h2 className="program-title">{data.title}</h2>
               <ExpandButton {...data} />
-              {/* <p className="checkbox-label">Assistir mais tarde?</p>
-              <input
-                className="reminder-checkbox"
-                type="checkbox" 
-                onChange={() => { 
-                  reminder()
-                  console.log(checked)
-                  true ? alert(`Programa: "${data.title}" marcado!`) : alert('Desmarcado!')
-                  // aqui o checked está alterando, mas a condicional não altera com ele, sempre retornando true
-                }}
-              /> */}
             </Details>
             
           )
