@@ -37,11 +37,10 @@ Para que sua aplicação web seja útil ao público final (nossos telespectadore
  -   Axios - consumir a API
  -   Styled - components - estilização dos componentes e páginas
  -   Moment - facilitar a manipulação de datas e horas
- -   Swiper - troca do dia da programação durante a semana (acabou não sendo utilizado)
- -   react-collapsed - abertura e fechamento de uma janela com mais detalhes da programação
+
 
 #### Notas do desenvolvimento
 
 Minha maior dificuldade nesse desafio foi consumir a API, fiquei alguns dias para tentar resolver o erro no CORS que apareceu, mas não consegui. Acabei encontrando um repositório parecido no GitHub e também pedi ajuda a um amigo mais experiente, assim consegui coletar os dados da API e pude dar sequência no desenvolvimento da aplicação. 
 
-Tive outras dificuldades durante o desafio, mas consegui contornar a maioria delas. As funcionalidades que não consegui implementar eu deixei um comentário no código detalhando melhor o que aconteceu. O layout foi baseado no site: https://redeglobo.globo.com/rpc/programacao/. Gostei muito de desenvolver esse projeto, foi realmente um desafio para mim e consegui absorver muito conhecimento em tão pouco tempo.
+Tive outras dificuldades durante o desafio, mas consegui contornar a maioria delas. O layout foi baseado no site: <a href="https://redeglobo.globo.com/rpc/programacao/">https://redeglobo.globo.com/rpc/programacao/</a>. Gostei muito de desenvolver esse projeto, foi realmente um desafio para mim e consegui absorver muito conhecimento em tão pouco tempo.
